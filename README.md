@@ -18,21 +18,22 @@ HOCig is our first ever tool on GitHub.
 
 # How To Install
 
-$ git clone https://github.com/hackersonlineclub/HOCig.git
+git clone https://github.com/hackersonlineclub/HOCig.git
 
-$ cd HOCig
+cd HOCig
 
-$ python hocig.py
+python hocig.py
 
 # Version
 1.0
 
 
-This is our first ever tool, please give your feedback. 
+HOCig our first ever tool on GitHub, please give your feedback. 
 
 
-Currently, we are working its second version, where you will get more features.
+Currently, we are working on its second version, where you will get more features.
 
-Note: If you get any error please do not hesitate to send an email on info@hackersonlineclub.com and Keep Subject "HOC Tool" info
+# Note: 
+If you get any error please do not hesitate to send an email on info@hackersonlineclub.com and Keep Subject "HOC Tool" info.
 
 Thanks :)
