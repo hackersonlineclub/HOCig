@@ -1,11 +1,11 @@
 # HOCig
-HOC Information Gathering Tool
+HOC IG- Automatic HOC (Information Gathering) Tool
 
-HOC IG- HOC (Information Gathering) Tool
+You do not add to Library, it automatically detects and Run
 
 Here you go..
 
-This is our first ever version of tool.
+HOCig is our first ever tool on GitHub.
 
 
 Here you will find
