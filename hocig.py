@@ -257,7 +257,7 @@ def RECO2(hostname):
 			pass
 
 	except:
-		info3(sslnotfound)
+		Log.info3(sslnotfound)
 #-----------------------------------RECO Whois -------------------------------------
 def RECO3(ip):
 	print(R + '---------------------------------------------------')
