@@ -122,12 +122,12 @@ finderurl = 'https://www.pagesinventory.com/search/?s='
 errormsgreq = 'Error on getting request'
 match = '/domain/(.*?).html(.*?)'
 WHAT = 'WHAT YOU WANT TO DO?'
-keybordexcpt = 'Keyboard Interruption! Exiting...'
+keybordexcpt = 'Keyboard Interruption! Exiting... '
 exit = 'Press CTRL + C for EXIT'
-retrypls ='Wrong target not able to get IP address Please retry'
-sslnotfound = 'SSL is not Present on Target URL...Skipping...'
+retrypls ='Wrong target not able to get IP address Please retry '
+sslnotfound = 'SSL is not Present on Target URL...Skipping... '
 msgsinfo = 'This website have references to the following websites: '
-presskey='Press a key to continue'
+presskey='Press a key to continue '
 ABC = 'User-Agent'
 BCD = 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0'
 linkregex = re.compile('[^>](?:href\=|src\=|content\=\"http)[\'*|\"*](.*?)[\'|\"].*?>',re.IGNORECASE)
@@ -628,7 +628,7 @@ def RECO5(target):
     elif 'Nothing was found' in response:
 	    Log.info2('No Subdomains Found For This'+ target)
     else:
-	    Log.info3('Error')
+	    Log.info3(No Subdomains Found For This : '+ target)
 #-----------------------------------main start --------------------------------------
 if __name__ == '__main__':
     try:
