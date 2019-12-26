@@ -626,9 +626,9 @@ def RECO5(target):
 	        for i in re.findall(match, response):
 	            Log.info1(i[0])
     elif 'Nothing was found' in response:
-	    Log.info2('No Subdomains Found For This'+ target)
+	    Log.info2('No Subdomains Found For This : '+ target)
     else:
-	    Log.info3(No Subdomains Found For This : '+ target)
+	    Log.info3('No Subdomains Found For This : '+ target)
 #-----------------------------------main start --------------------------------------
 if __name__ == '__main__':
     try:
