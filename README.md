@@ -35,7 +35,7 @@ python hocig.py
 HOCig our first ever tool on GitHub, please give your feedback. 
 
 
-Currently, we are working on its second version, where you will get more features.
+Currently, we are working on its Third version, where you will get more features.
 
 # Note: 
 If you get any error please do not hesitate to send an email on info@hackersonlineclub.com and Keep Subject "HOC Tool" info.
