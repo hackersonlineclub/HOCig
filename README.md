@@ -18,7 +18,6 @@ HOCig is our first ever tool on GitHub.
 7.  Port Scanner using SYN ACK Scan
 8.  OS Finger Printing
 9.  Crawl Target Website (includes Email, Sub-Domain, File Type )
-10. Test All Available Options
 
 # How To Install
 
