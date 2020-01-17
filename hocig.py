@@ -12,12 +12,6 @@ except ImportError:
     os.system('pip install ssl')
     print ('ssl has been installed.....')
 try:
-    import nmap
-except ImportError:
-    print ('nmap isn\'t installed, installing now.')
-    os.system('pip install python-nmap')
-    print ('python-nmap has been installed.....')
-try:
     import socket
 except ImportError:
     print ('socket isn\'t installed, installing now.')
@@ -107,9 +101,9 @@ intro = '''
             		#    #  #    #  #
             		#    #   ####    #####
             
-            Version : 1.2
+            Version : 1.0
             Team Hackersonlineclub
-            Website : https://hackersonlineclub.com
+        	Website : https://hackersonlineclub.com
         --------------------------------------------------
     '''
 
@@ -125,7 +119,7 @@ C = '\033[1;36m'
 underline = "\033[4m" 
 log=False
 finderurl = 'https://www.pagesinventory.com/search/?s='
-errormsgreq = 'Error on getting request '
+errormsgreq = 'Error on getting request'
 match = '/domain/(.*?).html(.*?)'
 WHAT = 'WHAT YOU WANT TO DO?'
 keybordexcpt = 'Keyboard Interruption! Exiting... '
@@ -170,72 +164,43 @@ def RECO(hostname,target,ip):
 	Log.info2(' Target IP address :'+ ip)
 	print('\n')
 	Log.info(WHAT)
-	Log.info(' 1.  Header Information')
-	Log.info(' 2.  SSL Certificate Information')
-	Log.info(' 3.  Whois Lookup')
-	Log.info(' 4.  Sub-domain Website')
-	Log.info(' 5.  Robots.txt')
-	Log.info(' 6.  Honeypot Detector using Shodan')
-	Log.info(' 7.  Port Scanner using SYN ACK Scan')
-	Log.info(' 8.  OS Finger Printing')
-	Log.info(' 9.  Crawl Target Website (includes Email, Sub-Domain, File Type )')
-	Log.info(' 10. Test All Available Options')
-    	Log.info(' 0.  Change Target')
+	Log.info(' 1. Get Header Information')
+	Log.info(' 2. Get SSL Certificate Information')
+	Log.info(' 3. Get Whois Lookup')
+	Log.info(' 4. Get Sub-domain Website')
+	Log.info(' 5. Crawl Target Website (includes Email, Sub-Domain, File Type )')
+	Log.info(' 6. Test All Available Options')
+    	Log.info(' 0. Change Target')
 	Log.info(exit)	
 	print('\n')
 	RECO_var = raw_input('Enter your choice: >')
 	Log.info3(' TARGET :' + target)
 	if(RECO_var=="1"):
-		RECO1(target) #Header
-		a = raw_input('Press enter for continue')
+		RECO1(target) #header
         	RECO(hostname,target,ip)
 	if(RECO_var=="2"):
 		RECO2(hostname) #SSL certificate
-		a = raw_input('Press enter for continue')
         	RECO(hostname,target,ip)
 	if(RECO_var=="3"):
 		RECO3(ip) #Whois lookup
-		a = raw_input('Press enter for continue')
         	RECO(hostname,target,ip)        
 	if(RECO_var=="4"):
 		RECO5(hostname) #sub domain
-		a = raw_input('Press enter for continue')
-        	RECO(hostname,target,ip)     
+        	RECO(hostname,target,ip)        
 	if(RECO_var=="5"):
-		RECORobot(target) #Robots.txt
-		a = raw_input('Press enter for continue')
-        	RECO(hostname,target,ip)
-	if(RECO_var=="6"):
-		RECOHoneypot(ip) #Honeypot Detector
-		a = raw_input('Press enter for continue')
-        	RECO(hostname,target,ip)  
-	if(RECO_var=="9"):
 		RECO4(target) #crawl target
-		a = raw_input('Press enter for continue')
-        	RECO(hostname,target,ip)
-	if(RECO_var=="8"):
-		RECOOSprinting(ip) #OS Fingerprinting
-		a = raw_input('Press enter for continue')
-        	RECO(hostname,target,ip)
-	if(RECO_var=="7"):
-		RECOPortScanner(ip) #Port Scanner
-		a = raw_input('Press enter for continue')
-        	RECO(hostname,target,ip)
-	if(RECO_var=="10"):
+		RECO(hostname,target,ip)
+	if(RECO_var=="6"):
 	 # Test all the avaible option
- 		RECO1(target) #Header
-		RECO2(hostname) #SSL certificate
-		RECO3(ip) #Whois lookup
-		RECO5(hostname) #Sub domain
-		RECORobot(target) #Robots.txt
-		RECOHoneypot(ip) #Honeypot Detector
-		RECOOSprinting(ip) #OS Fingerprinting
-		RECOPortScanner(ip) #Port Scanner
-		RECO4(target) #Crawl target
-        	RECO(hostname,target,ip) #Change target
+ 		RECO1(target)
+		RECO2(hostname)
+		RECO3(ip)
+		RECO5(hostname)
+		RECO4(target)
+        	RECO(hostname,target,ip)
 	if(RECO_var=="0"):
         	IPchk() #Change target
-	if(RECO_var !="1" and RECO_var !="2" and RECO_var !="3" and RECO_var !="4" and RECO_var !="5" and RECO_var !="6" and RECO_var !="8" and RECO_var !="9" and RECO_var !="10" and RECO_var !="7" and RECO_var !="0"):
+	if(RECO_var !="1" and RECO_var !="2" and RECO_var !="3" and RECO_var !="4" and RECO_var !="5" and RECO_var !="6" and RECO_var !="0"):
 		print(R + 'Wrong Key Enter Retry...' + presskey)
         	raw_input()
 		RECO(hostname,target,ip)
@@ -247,7 +212,7 @@ def RECO1(target):
 	print(R + '---------------------------------------------------')
 	ReQ = requests.get(target, verify=False, timeout=10)
 	for k, v in ReQ.headers.items():
-		Log.info1('{} : '.format(k) + v)
+		Log.info1(' {} : '.format(k) + v)
 #-----------------------------------RECO SSL ---------------------------------------
 def RECO2(hostname):
 	print(R + '---------------------------------------------------')
@@ -277,9 +242,9 @@ def RECO2(hostname):
 			os.remove('{}.pem'.format(hostname))
 		try:
 			for k, v in subject.items():
-				Log.info1('{} : '.format(str(k)) + W + str(v))
+				Log.info1(' {} : '.format(str(k)) + W + str(v))
 			for k, v in issuer.items():
-				Log.info1('{} : '.format(str(k)) + W + str(v))
+				Log.info1(' {} : '.format(str(k)) + W + str(v))
 			Log.info1('Version : ' + W + str(info['version']))
 			Log.info1('Serial Number : ' + W + str(info['serialNumber']))
 			Log.info1('Not Before : ' + W + str(info['notBefore']))
@@ -309,7 +274,7 @@ def RECO3(ip):
 		Log.info1('ASN Date : ' + W + str(results['asn_date']))
 		Log.info1('ASN Description : ' + W + str(results['asn_description']))
 		for k, v in results['nets'][0].items():
-			Log.info1('{} : '.format(str(k)) + W + str(v))
+			Log.info1(' {} : '.format(str(k)) + W + str(v))
 	except Exception as e:
 		Log.info3(' Error : ' + C + str(e) + W)
 		pass
@@ -650,11 +615,8 @@ def RECO5(target):
     print(R + '---------------------------------------------------')
     Log.info('SubDomain Finder :' + W )
     print(R + '---------------------------------------------------')
-    try:
-    	uRl = finderurl + target
-    	requ = requests.get(uRl)
-    except:
-    	Log.info3(errormsgreq)
+    uRl = finderurl + target
+    requ = requests.get(uRl)
     try:
     	response = requ.content.decode('utf-8')
     except:
@@ -667,120 +629,6 @@ def RECO5(target):
 	    Log.info2('No Subdomains Found For This : '+ target)
     else:
 	    Log.info3('No Subdomains Found For This : '+ target)
-
-
-#-----------------------------------RECO RobotTxt ---------------------------------
-def RECORobot(target):
-    	print(R + '---------------------------------------------------')
-    	Log.info('Robots.txt Finder :' + W )
-    	print(R + '---------------------------------------------------')
-	try:
-	 	req = requests.get(target)
-	 	UTC = req.url
-    	except:
-        	Log.info2('Error on getting responce')
-        	sys.exit(1)
-        url_ = UTC + "/robots.txt" 
-	try:
-		requ = requests.get(url_)
-		request = requ.content.decode('utf-8')
-	except:
-	    	Log.info3(errormsgreq)
-        try:
-		if 'User-agent' in request:
-			if len(request) != 5:
-		            list = request.strip("").split("\n")
-		            for inks in list:
-		                if len(inks) != 0:
-		                    Log.info1(inks)
-		else:
-			Log.info3('No Robots.txt Found For This : '+ target)
-        except:
-            Log.info3(errormsgreq)
-
-#-----------------------------------RECO Honeypot Detector----------------------------
-def RECOHoneypot(ip):
-    	print(R + '---------------------------------------------------')
-    	Log.info('Honeypot Detector :' + W )
-    	print(R + '---------------------------------------------------')
-	URLINK = "https://api.shodan.io/labs/honeyscore/" + ip + "?key=C23OXE0bVMrul2YeqcL7zxb6jZ4pj2by"
-	try:
-		requ = requests.get(URLINK)
-		request = requ.content.decode('utf-8')
-	except:
-	    	Log.info3(errormsgreq)	
-        try:	
-		probability = str(float(request) * 10)
-		if float(request) < 0.5:
-			Log.info1("Honeypot Percent : " + probability)
-		else:
-			Log.info3("Honeypot Percent : " + probability)
-        except:
-            Log.info3(errormsgreq)
-#-----------------------------------OS Finger Printing-------------------------------
-def RECOOSprinting(ip):
-	print(R + '---------------------------------------------------')
-    	Log.info('OS Finger Printing :' + W )
-    	print(R + '---------------------------------------------------')
-	try:	
-		nm_scanner=nmap.PortScanner()
-		nm_scan=nm_scanner.scan(ip,'80',arguments='-O')	
-        except Exception as e:
-		Log.info3(errormsgreq + str(e)) 
-	try:
-		Log.info1("The host is : "+ nm_scan['scan'][ip]['status']['state'])
-	except:
-		Log.info3("errormsgreq")
-	try:
-		Log.info1("Port 80 is : "+ nm_scan['scan'][ip]['tcp'][80]['state'])
-	except:
-		Log.info3("errormsgreq")
-	try:
-		Log.info1("Scanning method is : "+nm_scan['scan'][ip]['tcp'][80]['reason'])
-	except:
-		Log.info3("errormsgreq")
-	
-	try:
-		Log.info1("Predicted Operating System is : "+nm_scan['scan'][ip]['osmatch'][0]['osclass'][0]['osfamily'])
-	except:
-		Log.info3("Predicted Operating System is : No OS matches for host")
-	
-	try:
-		Log.info1("OS Prediction percentage is : "+nm_scan['scan'][ip]['osmatch'][0]['accuracy'])
-	except:
-		Log.info3("OS Prediction percentage is : Null because No OS matches for host")
-
-
-#-----------------------------------Port Scanner --------------------------------------
-def RECOPortScanner(ip):
-	nm_scanner = nmap.PortScanner()
-	print(R + '---------------------------------------------------')
-    	Log.info('Port Scanner :' + W )
-    	print(R + '---------------------------------------------------')
-	try:
-            nm_scanner.scan(ip)
-            ports = nm_scanner[ip]['tcp'].keys()
-            for port in ports:
-                state = nm_scanner[ip]['tcp'][port]['state']
-                service = nm_scanner[ip]['tcp'][port]['name']
-                product = nm_scanner[ip]['tcp'][port]['product']
-		name = nm_scanner[ip]['tcp'][port]['name']
-		extrainfo = nm_scanner[ip]['tcp'][port]['extrainfo']
-		reason = nm_scanner[ip]['tcp'][port]['reason']
-		version = nm_scanner[ip]['tcp'][port]['version']
-		conf = nm_scanner[ip]['tcp'][port]['conf']
-                if state == 'open':
-                    	Log.info1("Open port : "+str(port))
-			Log.info1("State : "+str(state))
-			Log.info1("Service : "+str(service))
-			Log.info1("Product : "+str(product))
-			Log.info1("Name : "+str(name))
-			Log.info1("Extrainfo : "+str(extrainfo))
-			Log.info1("Reason : "+str(reason))
-			Log.info1("Version : "+str(version))
-			Log.info1("Conf : "+str(conf)+"\n")		
-        except:
-            Log.info3(errormsgreq) 
 #-----------------------------------main start --------------------------------------
 if __name__ == '__main__':
     try:
@@ -792,4 +640,3 @@ if __name__ == '__main__':
     except Exception as inst:
             Log.info1( 'Exception in __name__ == __main__ function')
             sys.exit(1)
-    
