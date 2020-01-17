@@ -9,15 +9,11 @@ HOCig is our first ever tool on GitHub.
 
 
 # Here you will find
-1.  Header Information
-2.  SSL Certificate Information
-3.  Whois Lookup
-4.  Sub-domain Website
-5.  Robots.txt
-6.  Honeypot Detector using Shodan
-7.  Port Scanner using SYN ACK Scan
-8.  OS Finger Printing
-9.  Crawl Target Website (includes Email, Sub-Domain, File Type )
+1.  Get Header Information
+2.  Get SSL Certificate Information
+3.  Get Whois Lookup
+4.  Get Sub-domain Website
+5.  Crawl Target Website (includes Email, Sub-Domain, File Type )
 
 # How To Install
 
@@ -28,7 +24,7 @@ cd HOCig
 python hocig.py
 
 # Version
-1.2
+1.0
 
 
 HOCig our first ever tool on GitHub, please give your feedback. 
